@@ -1,0 +1,65 @@
+<template>
+    <div class="running-line-container">
+      <div class="running-line">
+        <span>{{ joinedVisibleText }}</span>
+      </div>
+    </div>
+  </template>
+  
+  <script>
+  export default {
+    name: 'RunningLine',
+    props: {
+      text: {
+        type: [Array, String],
+        required: true
+      }
+    },
+    data() {
+      return {
+        visibleText: []
+      };
+    },
+    mounted() {
+      if (typeof this.text === 'string') {
+        this.visibleText = this.text.split(' '); // Convert string to array
+      } else if (Array.isArray(this.text)) {
+        this.visibleText = this.text;
+      }
+      alert(typeof this.visibleText);
+    },
+    computed: {
+      joinedVisibleText() {
+        return this.visibleText.join(' ');
+      }
+    }
+  };
+  </script>
+  
+  <style scoped>
+  .running-line-container {
+    background-color: #f0f0f0;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border: 1px solid red; /* Debugging: Add border to visualize */
+  }
+  
+  .running-line {
+    display: inline-block;
+    white-space: nowrap;
+    position: absolute;
+    animation: marquee 2s linear infinite;
+    border: 1px solid blue; /* Debugging: Add border to visualize */
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  </style>
+  
