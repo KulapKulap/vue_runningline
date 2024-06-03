@@ -12,7 +12,7 @@
     data() {
       return {
         runningLine: [],
-        invis: "\u00A0\u00A0\u00A0" // Using non-breaking space entity
+        invis: "\u00A0\u00A0\u00A0" 
       };
     },
     mounted() {
@@ -55,7 +55,7 @@
   }
   
   .running-line:nth-child(1) {
-    animation-delay: 0s; /* Delay for the first item */
+    animation-delay: 0s;
     
   }
 
